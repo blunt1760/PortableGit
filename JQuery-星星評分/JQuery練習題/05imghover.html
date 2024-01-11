@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8">
+    <title>star評分.html</title>
+    <style>
+        .type{
+            margin-top: 150px;
+            margin-left: 400px;
+        }
+        span{
+            margin-left: 600px;
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body> 
+
+<div class="type">
+    <img id="img" class="i" src="images/star.gif" />  
+    <img id="img" class="i" src="images/star.gif" /> 
+    <img id="img" class="i" src="images/star.gif" />  
+    <img id="img" class="i" src="images/star.gif" />  
+    <img id="img" class="i" src="images/star.gif" />     
+</div>
+<div>
+    <span></span>
+</div>
+
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script>
+            //滑鼠移入
+            $("img").mouseenter(function(){
+                $(this).attr("src","images/chngstar.gif");
+                $(this).prevAll().attr("src","images/chngstar.gif");
+
+            //評分
+                i=$(this).index();
+                $("span").text(`評分中...已獲得(${i+1})星`);
+            })
+
+            //滑鼠移出
+            $("img").mouseleave(function(){
+                $(this).attr("src","images/star.gif");
+                $(this).prevAll().attr("src","images/star.gif");
+                $("span").text("");
+            })
+
+            //固定星數&取消固定星數
+            $("img").on("click",function(){
+                $("img").off("mouseleave");
+            })
+
+            $("img").on("dblclick",function(){
+                $("img").filter("img").attr("src","images/star.gif");
+            })
+    </script> 
+</body>  
+</html>
